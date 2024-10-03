@@ -7,15 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Dggdoo</copyright>
-        <lastBuildDate>Thu, 03 Oct 2024 21:11:51 +0800</lastBuildDate><atom:link href="https://dggduu.github.io/dggduu-blogs/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Test</title>
-        <link>https://dggduu.github.io/dggduu-blogs/p/test/</link>
-        <pubDate>Thu, 03 Oct 2024 21:11:51 +0800</pubDate>
-        
-        <guid>https://dggduu.github.io/dggduu-blogs/p/test/</guid>
-        <description></description>
-        </item>
-        <item>
+        <lastBuildDate>Thu, 03 Oct 2024 16:47:12 +0800</lastBuildDate><atom:link href="https://dggduu.github.io/dggduu-blogs/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>MyFirstBlog</title>
         <link>https://dggduu.github.io/dggduu-blogs/p/myfirstblog/</link>
         <pubDate>Thu, 03 Oct 2024 16:47:12 +0800</pubDate>
@@ -24,6 +16,192 @@
         <description>&lt;h2 id=&#34;hello-world&#34;&gt;HELLO WORLD
 &lt;/h2&gt;&lt;h3 id=&#34;hey-you-guys&#34;&gt;HEY YOU GUYS
 &lt;/h3&gt;</description>
+        </item>
+        <item>
+        <title>sublime text4暴力破解小记</title>
+        <link>https://dggduu.github.io/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/</link>
+        <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://dggduu.github.io/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/</guid>
+        <description>&lt;img src="https://dggduu.github.io/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/title.jpg" alt="Featured image of post sublime text4暴力破解小记" /&gt;&lt;h2 id=&#34;什么是sublime-text&#34;&gt;什么是Sublime Text
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Sublime Text 是一款功能强大的跨平台文本编辑器，适用于代码、标记和散文。它支持多种编程语言和标记语言，用户可以使用主题进行定制，并通过插件扩展其功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我自己比较习惯使用Sublime text作为我日常使用的IDE,原因如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;跨平台：我时常在Windows与Arch两个系统中切换使用。我不怎么用得惯vim,nano这种编辑器，因为我不想因为重装完系统后有重新配置vim，而Sublime的话可以基本开箱即用(虽说有dotfiles这种方便的东西，但我太懒了并没有想学的想法)&lt;/li&gt;
+&lt;li&gt;轻量：我就是看Electron不顺眼&lt;/li&gt;
+&lt;li&gt;Package Manager生态：有不错的color scheme,我挺喜欢；还有Markdown插件，让我少了个用VSC的理由（苦笑）
+&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;为什么要自己破解&#34;&gt;为什么要自己破解
+&lt;/h2&gt;&lt;p&gt;sublime的付费版相较于免费版功能上没有区别，就少了个会随时提醒你赞助的弹窗。看起来无伤大雅，但当你进入工作环境后需要疯狂按&amp;rsquo;Ctrl+S&amp;rsquo;时它真的很烦人！！！
+我曾在52上寻找过破解版，它们都有让我劝退的原因：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无法使用Package Manager：没有Package Manager的sublime是十分难用的，不装插件它甚至不支持UTF-8&lt;/li&gt;
+&lt;li&gt;触发防破解机制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最后被逼得穷途末路只好自己破解&lt;/p&gt;
+&lt;h2 id=&#34;进入正题&#34;&gt;进入正题
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;我有两年没搞破解了，精妙的破解手法已经忘干净了，所以有低级错误请见谅😥&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;分析&#34;&gt;分析
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/windows.jpg&#34;
+	width=&#34;843&#34;
+	height=&#34;650&#34;
+	srcset=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/windows_hu312836028135575175.jpg 480w, https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/windows_hu11069052107322258433.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;311px&#34;
+	
+&gt;
+首先我们要明确我们的目的，干掉这个弹窗。那么有这些办法可行&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;寻找判断是否为捐赠用户的jump，破解联网验证并拔除所有暗桩&lt;/li&gt;
+&lt;li&gt;寻找控制弹窗弹出的函数,使之在任何条件下都不弹出
+显然从操作性和时间上说2方案更无脑且更简单,所以我选择2方案&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;前置操作&#34;&gt;前置操作
+&lt;/h3&gt;&lt;p&gt;先用PEID查壳&amp;hellip;没查到。那再试试万能脱壳机&amp;hellip;也不行。
+好吧，尝试自己脱壳，反正可以用ESP大法&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;嘛&amp;hellip;等下，我好像没破解过64位程序唉😫&lt;br&gt;
+（省略查资料的事件）&lt;br&gt;
+OK,兄弟们，有壳没关系，干就完了。（不要学我）&lt;/p&gt;
+&lt;h2 id=&#34;进入x64dbg&#34;&gt;进入x64dbg
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;先 &lt;code&gt;F9&lt;/code&gt; 进入程序主界面&lt;/li&gt;
+&lt;li&gt;搜索字符串&amp;quot;This is an unregistered copy&amp;quot;&lt;br&gt;
+&lt;img src=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/finding.png&#34;
+	width=&#34;1232&#34;
+	height=&#34;101&#34;
+	srcset=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/finding_hu3918880994219902949.png 480w, https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/finding_hu2785081368068326617.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;finging&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1219&#34;
+		data-flex-basis=&#34;2927px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;进入函数,我们很快就看出了弹窗函数的一部分（maybe,我也没往下分析）
+&lt;img src=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/1.png&#34;
+	width=&#34;1219&#34;
+	height=&#34;637&#34;
+	srcset=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/1_hu17817420041435434879.png 480w, https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/1_hu10845187435254169939.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;459px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;函数顶部有个jmp，这阻挠了我们分析这个子函数是哪个函数调用而来。我们对之、子函数顶部进行 &lt;code&gt;查找引用&lt;/code&gt; 操作，得知就在上面标注处(下图 00007FF6AB750D81 )&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-asm&#34; data-lang=&#34;asm&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D5D&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;84&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;D1&lt;/span&gt;                           &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;cl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;dl&lt;/span&gt;                                        &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D5F&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;75&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;B&lt;/span&gt;                          &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;jne&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;sublime_text.7FF6AB750D6C&lt;/span&gt;                     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D61&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;83&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;F8&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;                        &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;cmp&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;eax&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;                                         &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;\&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D64&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;D&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;06&lt;/span&gt;                          &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;jge&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;sublime_text.7FF6AB750D6C&lt;/span&gt;                     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D66&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;48&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;83&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;C4&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;                     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rsp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;                                        &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D6A&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;E&lt;/span&gt;                             &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;pop&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rsi&lt;/span&gt;                                           &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D6B&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;C3&lt;/span&gt;                             &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ret&lt;/span&gt;                                               &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D6C&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8325&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;C5836D00&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;dword&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ptr&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;FF6ABE29138&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;                 &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D73&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;48&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8935&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;B6836D00&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;mov&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;qword&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ptr&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;FF6ABE29130&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;rsi&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D7A&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;48&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;D0D&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;CFDD6D00&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;lea&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rcx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;qword&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ptr&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;FF6ABE2EB50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;00007&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FF6AB750D81&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;48&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;D15&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;D000000&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;lea&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rdx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;qword&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ptr&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;FF6AB750D95&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;进入加载字符串函数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;我们进行一下简单的推理：要使窗口弹出，则必须要运行到 &lt;code&gt;进入加载字符串函数&lt;/code&gt;环节，而要到这一环节着要从上方的 &lt;code&gt;jge&lt;/code&gt; 或是 &lt;code&gt;jne&lt;/code&gt; 跳转过来。所以我们可以不让这两个jump执行就可以了吗？只能说有可能，毕竟你不清楚在两个是在子函数内的还是外面的，会不会跳过之后触发防破解代码&amp;hellip;
+&lt;img src=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/2.png&#34;
+	width=&#34;643&#34;
+	height=&#34;637&#34;
+	srcset=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/2_hu1923219386120428056.png 480w, https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/2_hu10303566710999943488.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;242px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;我们继续向上分析，挺幸运的是我们看到了 &lt;code&gt;GetTickCount&lt;/code&gt; 这个系统函数，我们在 MSDN 查到它的作用。好的，那基本上我们要分析的内容都找完了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;GetTickCount 函数 （sysinfoapi.h）&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt;&lt;br&gt;
+作用：检索自系统启动以来已用过的毫秒数&lt;br&gt;
+返回值：自系统启动以来经过的毫秒数。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;综上可推测：&lt;br&gt;
+&lt;img src=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/3.png&#34;
+	width=&#34;474&#34;
+	height=&#34;831&#34;
+	srcset=&#34;https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/3_hu13359738485911544221.png 480w, https://dggduu.github.io/dggduu-blogs/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/3_hu3892042219087443285.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;57&#34;
+		data-flex-basis=&#34;136px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;那么我们就有两种改法了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;修改GetTickCount函数上下两个判断&lt;/li&gt;
+&lt;li&gt;更改jge,jne两个跳转&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;这里我选择第一种，因为第二种可能会触发一些暗桩。（具体有无我也没分析）。
+这两种改法任选一个即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;将jne改为jmp&lt;/li&gt;
+&lt;li&gt;将jl改成jmp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;尾声&#34;&gt;尾声
+&lt;/h2&gt;&lt;p&gt;目前没遇到什么问题。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ctf-wiki.org/reverse/platform/windows/unpack/esp/#:~:text=ESP%20%E5%AE%9A%E5%BE%8B%E6%B3%95%20ESP%20%E5%AE%9A%E5%BE%8B%E6%B3%95%E6%98%AF%E8%84%B1%E5%A3%B3%E7%9A%84%E5%88%A9%E5%99%A8%2C%20%E6%98%AF%E5%BA%94%E7%94%A8%E9%A2%91%E7%8E%87%E6%9C%80%E9%AB%98%E7%9A%84%E8%84%B1%E5%A3%B3%E6%96%B9%E6%B3%95%E4%B9%8B%E4%B8%80.%20%E8%A6%81%E7%82%B9%20ESP%20%E5%AE%9A%E5%BE%8B%E7%9A%84%E5%8E%9F%E7%90%86%E5%9C%A8%E4%BA%8E%E5%88%A9%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%B8%AD%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1%E6%9D%A5%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0,%E7%94%B1%E4%BA%8E%E5%9C%A8%E7%A8%8B%E5%BA%8F%E8%87%AA%E8%A7%A3%E5%AF%86%E6%88%96%E8%80%85%E8%87%AA%E8%A7%A3%E5%8E%8B%E8%BF%87%E7%A8%8B%E4%B8%AD%2C%20%E4%B8%8D%E5%B0%91%E5%A3%B3%E4%BC%9A%E5%85%88%E5%B0%86%E5%BD%93%E5%89%8D%E5%AF%84%E5%AD%98%E5%99%A8%E7%8A%B6%E6%80%81%E5%8E%8B%E6%A0%88%2C%20%E5%A6%82%E4%BD%BF%E7%94%A8%20pushad%2C%20%E5%9C%A8%E8%A7%A3%E5%8E%8B%E7%BB%93%E6%9D%9F%E5%90%8E%2C%20%E4%BC%9A%E5%B0%86%E4%B9%8B%E5%89%8D%E7%9A%84%E5%AF%84%E5%AD%98%E5%99%A8%E5%80%BC%E5%87%BA%E6%A0%88%2C%20%E5%A6%82%E4%BD%BF%E7%94%A8%20popad.&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ESP 定律法 -CTF wiki&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/zh-cn/windows/win32/api/sysinfoapi/nf-sysinfoapi-gettickcount&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GetTickCount的解释 -MSDN&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
         </item>
         <item>
         <title>归档</title>

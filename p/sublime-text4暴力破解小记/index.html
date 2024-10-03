@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="我将在此文中演示如何使用字符串追踪法暴力破解SublimeText Build 4180版本">
+<title>sublime text4暴力破解小记</title>
+
+<link rel='canonical' href='https://dggduu.github.io/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/dggduu-blogs/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="sublime text4暴力破解小记">
+<meta property='og:description' content="我将在此文中演示如何使用字符串追踪法暴力破解SublimeText Build 4180版本">
+<meta property='og:url' content='https://dggduu.github.io/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/'>
+<meta property='og:site_name' content='Aobara的Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-08-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://dggduu.github.io/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/title.jpg' />
+<meta name="twitter:title" content="sublime text4暴力破解小记">
+<meta name="twitter:description" content="我将在此文中演示如何使用字符串追踪法暴力破解SublimeText Build 4180版本"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://dggduu.github.io/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/title.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/dggduu-blogs/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/dggduu-blogs/img/avatar_hu10853315724308447746.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/dggduu-blogs">Aobara的Blog</a></h1>
+            <h2 class="site-description">这个博客用于存放一些笔记</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/1297734959'
+                        target="_blank"
+                        title="bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6z" /><path d="M8 3l2 3" /><path d="M16 3l-2 3" /><path d="M9 13v-2" /><path d="M15 11v2" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/dggduu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/dggduu-blogs/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/dggduu-blogs/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/dggduu-blogs/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/dggduu-blogs/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/dggduu-blogs/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#什么是sublime-text">什么是Sublime Text</a></li>
+    <li><a href="#为什么要自己破解">为什么要自己破解</a></li>
+    <li><a href="#进入正题">进入正题</a>
+      <ol>
+        <li><a href="#分析">分析</a></li>
+        <li><a href="#前置操作">前置操作</a></li>
+      </ol>
+    </li>
+    <li><a href="#进入x64dbg">进入x64dbg</a></li>
+    <li><a href="#尾声">尾声</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/">
+                <img src="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/title_hu14493645617316262117.jpg"
+                        srcset="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/title_hu14493645617316262117.jpg 800w, /dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/title_hu4855574859571336412.jpg 1600w"
+                        width="800" 
+                        height="391" 
+                        loading="lazy"
+                        alt="Featured image of post sublime text4暴力破解小记" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/dggduu-blogs/categories/%E7%A0%B4%E8%A7%A3/" >
+                破解
+            </a>
+        
+            <a href="/dggduu-blogs/categories/windows/" >
+                Windows
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/">sublime text4暴力破解小记</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            我将在此文中演示如何使用字符串追踪法暴力破解SublimeText Build 4180版本
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024/08/22</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="什么是sublime-text">什么是Sublime Text
+</h2><blockquote>
+<p>Sublime Text 是一款功能强大的跨平台文本编辑器，适用于代码、标记和散文。它支持多种编程语言和标记语言，用户可以使用主题进行定制，并通过插件扩展其功能。</p>
+</blockquote>
+<p>我自己比较习惯使用Sublime text作为我日常使用的IDE,原因如下：</p>
+<ul>
+<li>跨平台：我时常在Windows与Arch两个系统中切换使用。我不怎么用得惯vim,nano这种编辑器，因为我不想因为重装完系统后有重新配置vim，而Sublime的话可以基本开箱即用(虽说有dotfiles这种方便的东西，但我太懒了并没有想学的想法)</li>
+<li>轻量：我就是看Electron不顺眼</li>
+<li>Package Manager生态：有不错的color scheme,我挺喜欢；还有Markdown插件，让我少了个用VSC的理由（苦笑）
+&hellip;</li>
+</ul>
+<h2 id="为什么要自己破解">为什么要自己破解
+</h2><p>sublime的付费版相较于免费版功能上没有区别，就少了个会随时提醒你赞助的弹窗。看起来无伤大雅，但当你进入工作环境后需要疯狂按&rsquo;Ctrl+S&rsquo;时它真的很烦人！！！
+我曾在52上寻找过破解版，它们都有让我劝退的原因：</p>
+<ul>
+<li>无法使用Package Manager：没有Package Manager的sublime是十分难用的，不装插件它甚至不支持UTF-8</li>
+<li>触发防破解机制</li>
+</ul>
+<p>最后被逼得穷途末路只好自己破解</p>
+<h2 id="进入正题">进入正题
+</h2><p><strong>我有两年没搞破解了，精妙的破解手法已经忘干净了，所以有低级错误请见谅😥</strong></p>
+<h3 id="分析">分析
+</h3><p><img src="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/windows.jpg"
+	width="843"
+	height="650"
+	srcset="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/windows_hu312836028135575175.jpg 480w, /dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/windows_hu11069052107322258433.jpg 1024w"
+	loading="lazy"
+	
+		alt="如图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="311px"
+	
+>
+首先我们要明确我们的目的，干掉这个弹窗。那么有这些办法可行</p>
+<ol>
+<li>寻找判断是否为捐赠用户的jump，破解联网验证并拔除所有暗桩</li>
+<li>寻找控制弹窗弹出的函数,使之在任何条件下都不弹出
+显然从操作性和时间上说2方案更无脑且更简单,所以我选择2方案</li>
+</ol>
+<h3 id="前置操作">前置操作
+</h3><p>先用PEID查壳&hellip;没查到。那再试试万能脱壳机&hellip;也不行。
+好吧，尝试自己脱壳，反正可以用ESP大法<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>嘛&hellip;等下，我好像没破解过64位程序唉😫<br>
+（省略查资料的事件）<br>
+OK,兄弟们，有壳没关系，干就完了。（不要学我）</p>
+<h2 id="进入x64dbg">进入x64dbg
+</h2><ol>
+<li>先 <code>F9</code> 进入程序主界面</li>
+<li>搜索字符串&quot;This is an unregistered copy&quot;<br>
+<img src="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/finding.png"
+	width="1232"
+	height="101"
+	srcset="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/finding_hu3918880994219902949.png 480w, /dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/finding_hu2785081368068326617.png 1024w"
+	loading="lazy"
+	
+		alt="finging"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1219"
+		data-flex-basis="2927px"
+	
+></li>
+<li>进入函数,我们很快就看出了弹窗函数的一部分（maybe,我也没往下分析）
+<img src="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/1.png"
+	width="1219"
+	height="637"
+	srcset="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/1_hu17817420041435434879.png 480w, /dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/1_hu10845187435254169939.png 1024w"
+	loading="lazy"
+	
+		alt="Alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="459px"
+	
+></li>
+<li>函数顶部有个jmp，这阻挠了我们分析这个子函数是哪个函数调用而来。我们对之、子函数顶部进行 <code>查找引用</code> 操作，得知就在上面标注处(下图 00007FF6AB750D81 )</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D5D</span>     <span class="err">|</span> <span class="mi">84</span><span class="no">D1</span>                           <span class="err">|</span> <span class="no">test</span> <span class="no">cl</span><span class="p">,</span><span class="no">dl</span>                                        <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D5F</span>     <span class="err">|</span> <span class="mi">75</span> <span class="mi">0</span><span class="no">B</span>                          <span class="err">|</span> <span class="no">jne</span> <span class="no">sublime_text.7FF6AB750D6C</span>                     <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D61</span>     <span class="err">|</span> <span class="mi">83</span><span class="no">F8</span> <span class="mi">09</span>                        <span class="err">|</span> <span class="no">cmp</span> <span class="no">eax</span><span class="p">,</span><span class="mi">9</span>                                         <span class="err">|</span> <span class="mi">09</span><span class="p">:</span><span class="err">&#39;\</span><span class="no">t</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D64</span>     <span class="err">|</span> <span class="mi">7</span><span class="no">D</span> <span class="mi">06</span>                          <span class="err">|</span> <span class="no">jge</span> <span class="no">sublime_text.7FF6AB750D6C</span>                     <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D66</span>     <span class="err">|</span> <span class="mi">48</span><span class="p">:</span><span class="mi">83</span><span class="no">C4</span> <span class="mi">20</span>                     <span class="err">|</span> <span class="no">add</span> <span class="no">rsp</span><span class="p">,</span><span class="mi">20</span>                                        <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D6A</span>     <span class="err">|</span> <span class="mi">5</span><span class="no">E</span>                             <span class="err">|</span> <span class="no">pop</span> <span class="no">rsi</span>                                           <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D6B</span>     <span class="err">|</span> <span class="no">C3</span>                             <span class="err">|</span> <span class="no">ret</span>                                               <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D6C</span>     <span class="err">|</span> <span class="mi">8325</span> <span class="no">C5836D00</span> <span class="mi">00</span>               <span class="err">|</span> <span class="no">and</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">7</span><span class="no">FF6ABE29138</span><span class="p">],</span><span class="mi">0</span>                 <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D73</span>     <span class="err">|</span> <span class="mi">48</span><span class="p">:</span><span class="mi">8935</span> <span class="no">B6836D00</span>               <span class="err">|</span> <span class="no">mov</span> <span class="no">qword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">7</span><span class="no">FF6ABE29130</span><span class="p">],</span><span class="no">rsi</span>               <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D7A</span>     <span class="err">|</span> <span class="mi">48</span><span class="p">:</span><span class="mi">8</span><span class="no">D0D</span> <span class="no">CFDD6D00</span>               <span class="err">|</span> <span class="no">lea</span> <span class="no">rcx</span><span class="p">,</span><span class="no">qword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">7</span><span class="no">FF6ABE2EB50</span><span class="p">]</span>               <span class="err">|</span>
+</span></span><span class="line"><span class="cl"><span class="err">00007</span><span class="nf">FF6AB750D81</span>     <span class="err">|</span> <span class="mi">48</span><span class="p">:</span><span class="mi">8</span><span class="no">D15</span> <span class="mi">0</span><span class="no">D000000</span>               <span class="err">|</span> <span class="no">lea</span> <span class="no">rdx</span><span class="p">,</span><span class="no">qword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">7</span><span class="no">FF6AB750D95</span><span class="p">]</span>               <span class="err">|</span> <span class="err">进入加载字符串函数</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>我们进行一下简单的推理：要使窗口弹出，则必须要运行到 <code>进入加载字符串函数</code>环节，而要到这一环节着要从上方的 <code>jge</code> 或是 <code>jne</code> 跳转过来。所以我们可以不让这两个jump执行就可以了吗？只能说有可能，毕竟你不清楚在两个是在子函数内的还是外面的，会不会跳过之后触发防破解代码&hellip;
+<img src="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/2.png"
+	width="643"
+	height="637"
+	srcset="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/2_hu1923219386120428056.png 480w, /dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/2_hu10303566710999943488.png 1024w"
+	loading="lazy"
+	
+		alt="Alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="242px"
+	
+></li>
+<li>我们继续向上分析，挺幸运的是我们看到了 <code>GetTickCount</code> 这个系统函数，我们在 MSDN 查到它的作用。好的，那基本上我们要分析的内容都找完了。</li>
+</ol>
+<blockquote>
+<p><strong>GetTickCount 函数 （sysinfoapi.h）<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></strong><br>
+作用：检索自系统启动以来已用过的毫秒数<br>
+返回值：自系统启动以来经过的毫秒数。</p>
+</blockquote>
+<p>综上可推测：<br>
+<img src="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/3.png"
+	width="474"
+	height="831"
+	srcset="/dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/3_hu13359738485911544221.png 480w, /dggduu-blogs/p/sublime-text4%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B0%8F%E8%AE%B0/3_hu3892042219087443285.png 1024w"
+	loading="lazy"
+	
+		alt="Alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="57"
+		data-flex-basis="136px"
+	
+></p>
+<ol start="7">
+<li>那么我们就有两种改法了</li>
+</ol>
+<ul>
+<li>修改GetTickCount函数上下两个判断</li>
+<li>更改jge,jne两个跳转</li>
+</ul>
+<ol start="8">
+<li>这里我选择第一种，因为第二种可能会触发一些暗桩。（具体有无我也没分析）。
+这两种改法任选一个即可。</li>
+</ol>
+<ul>
+<li>将jne改为jmp</li>
+<li>将jl改成jmp</li>
+</ul>
+<h2 id="尾声">尾声
+</h2><p>目前没遇到什么问题。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a class="link" href="https://ctf-wiki.org/reverse/platform/windows/unpack/esp/#:~:text=ESP%20%E5%AE%9A%E5%BE%8B%E6%B3%95%20ESP%20%E5%AE%9A%E5%BE%8B%E6%B3%95%E6%98%AF%E8%84%B1%E5%A3%B3%E7%9A%84%E5%88%A9%E5%99%A8%2C%20%E6%98%AF%E5%BA%94%E7%94%A8%E9%A2%91%E7%8E%87%E6%9C%80%E9%AB%98%E7%9A%84%E8%84%B1%E5%A3%B3%E6%96%B9%E6%B3%95%E4%B9%8B%E4%B8%80.%20%E8%A6%81%E7%82%B9%20ESP%20%E5%AE%9A%E5%BE%8B%E7%9A%84%E5%8E%9F%E7%90%86%E5%9C%A8%E4%BA%8E%E5%88%A9%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%B8%AD%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1%E6%9D%A5%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0,%E7%94%B1%E4%BA%8E%E5%9C%A8%E7%A8%8B%E5%BA%8F%E8%87%AA%E8%A7%A3%E5%AF%86%E6%88%96%E8%80%85%E8%87%AA%E8%A7%A3%E5%8E%8B%E8%BF%87%E7%A8%8B%E4%B8%AD%2C%20%E4%B8%8D%E5%B0%91%E5%A3%B3%E4%BC%9A%E5%85%88%E5%B0%86%E5%BD%93%E5%89%8D%E5%AF%84%E5%AD%98%E5%99%A8%E7%8A%B6%E6%80%81%E5%8E%8B%E6%A0%88%2C%20%E5%A6%82%E4%BD%BF%E7%94%A8%20pushad%2C%20%E5%9C%A8%E8%A7%A3%E5%8E%8B%E7%BB%93%E6%9D%9F%E5%90%8E%2C%20%E4%BC%9A%E5%B0%86%E4%B9%8B%E5%89%8D%E7%9A%84%E5%AF%84%E5%AD%98%E5%99%A8%E5%80%BC%E5%87%BA%E6%A0%88%2C%20%E5%A6%82%E4%BD%BF%E7%94%A8%20popad."  target="_blank" rel="noopener"
+    >ESP 定律法 -CTF wiki</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a class="link" href="https://learn.microsoft.com/zh-cn/windows/win32/api/sysinfoapi/nf-sysinfoapi-gettickcount"  target="_blank" rel="noopener"
+    >GetTickCount的解释 -MSDN</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Dggdoo
+    </section>
+    
+    <section class="powerby">
+        
+            这个博客用于存放一些笔记 <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/dggduu-blogs/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
