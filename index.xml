@@ -7,14 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Dggdoo</copyright>
-        <lastBuildDate>Thu, 03 Oct 2024 16:47:12 +0800</lastBuildDate><atom:link href="https://dggduu.github.io/dggduu-blogs/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>MyFirstBolg</title>
-        <link>https://dggduu.github.io/dggduu-blogs/p/myfirstbolg/</link>
+        <lastBuildDate>Thu, 03 Oct 2024 21:11:51 +0800</lastBuildDate><atom:link href="https://dggduu.github.io/dggduu-blogs/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Test</title>
+        <link>https://dggduu.github.io/dggduu-blogs/p/test/</link>
+        <pubDate>Thu, 03 Oct 2024 21:11:51 +0800</pubDate>
+        
+        <guid>https://dggduu.github.io/dggduu-blogs/p/test/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>MyFirstBlog</title>
+        <link>https://dggduu.github.io/dggduu-blogs/p/myfirstblog/</link>
         <pubDate>Thu, 03 Oct 2024 16:47:12 +0800</pubDate>
         
-        <guid>https://dggduu.github.io/dggduu-blogs/p/myfirstbolg/</guid>
-        <description>&lt;h6 id=&#34;helloworldhelloworld&#34;&gt;HELLOWORLDHELLOWORLD
-&lt;/h6&gt;</description>
+        <guid>https://dggduu.github.io/dggduu-blogs/p/myfirstblog/</guid>
+        <description>&lt;h2 id=&#34;hello-world&#34;&gt;HELLO WORLD
+&lt;/h2&gt;&lt;h3 id=&#34;hey-you-guys&#34;&gt;HEY YOU GUYS
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>归档</title>
