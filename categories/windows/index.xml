@@ -19,9 +19,9 @@
 &lt;/blockquote&gt;
 &lt;p&gt;我自己比较习惯使用Sublime text作为我日常使用的IDE,原因如下：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;跨平台：我时常在Windows与Arch两个系统中切换使用。我不怎么用得惯vim,nano这种编辑器，因为我不想因为重装完系统后有重新配置vim，而Sublime的话可以基本开箱即用(虽说有dotfiles这种方便的东西，但我太懒了并没有想学的想法)&lt;/li&gt;
+&lt;li&gt;跨平台：我时常在Windows与Arch两个系统中切换使用。我不怎么用得惯vim,nano这种编辑器。因为我不想重装完系统后有重新配置vim，而Sublime的话可以基本开箱即用(虽说有dotfiles这种方便的东西，但我太懒了并没有想学的想法)&lt;/li&gt;
 &lt;li&gt;轻量：我就是看Electron不顺眼&lt;/li&gt;
-&lt;li&gt;Package Manager生态：有不错的color scheme,我挺喜欢；还有Markdown插件，让我少了个用VSC的理由（苦笑）
+&lt;li&gt;Package Manager生态：有不错的color scheme,我挺喜欢；还有Markdown插件，让我少了个用VSC的理由（苦笑）&lt;br&gt;
 &amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;为什么要自己破解&#34;&gt;为什么要自己破解
