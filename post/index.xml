@@ -18,7 +18,7 @@
 &lt;li&gt;没钱买frp服务(指Gradio,ngrok这种可以用Python调用的)&lt;/li&gt;
 &lt;li&gt;4060 8GB容易爆显存。就我自己而言，速度不重要，显存很重要，因为显存决定了你能不能跑更大参数的模型或是更复杂的任务。（可惜硬要本地部署的话只能上台式😫，当然富哥也可以用4080 Laptop 12GB）&lt;/li&gt;
 &lt;li&gt;方便我将AI任务与笔电任务进行切割，从而省电。&lt;/li&gt;
-&lt;li&gt;在Jupyter Notebook流程十分清晰&lt;/li&gt;
+&lt;li&gt;在Jupyter Notebook上看到的流程十分清晰&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;什么是diffsuer&#34;&gt;什么是Diffsuer
