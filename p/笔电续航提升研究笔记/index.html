@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="动机 本是想换电脑的，但是13，14代intel cpu问题又打消了我的念头。在牢不可破的wintel联盟下我又怎么会去选amd呢（还有积热问题）\n30系显卡容易买到矿卡，40系又溢价。8GB显存又能干啥。\n最后没买，用上了旧电脑。这台电脑有两个问题：\n">
+<title>笔电续航提升研究笔记</title>
+
+<link rel='canonical' href='https://dggduu.github.io/dggduu-blogs/p/%E7%AC%94%E7%94%B5%E7%BB%AD%E8%88%AA%E6%8F%90%E5%8D%87%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/dggduu-blogs/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="笔电续航提升研究笔记">
+<meta property='og:description' content="动机 本是想换电脑的，但是13，14代intel cpu问题又打消了我的念头。在牢不可破的wintel联盟下我又怎么会去选amd呢（还有积热问题）\n30系显卡容易买到矿卡，40系又溢价。8GB显存又能干啥。\n最后没买，用上了旧电脑。这台电脑有两个问题：\n">
+<meta property='og:url' content='https://dggduu.github.io/dggduu-blogs/p/%E7%AC%94%E7%94%B5%E7%BB%AD%E8%88%AA%E6%8F%90%E5%8D%87%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='Aobara的Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-07-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-21T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="笔电续航提升研究笔记">
+<meta name="twitter:description" content="动机 本是想换电脑的，但是13，14代intel cpu问题又打消了我的念头。在牢不可破的wintel联盟下我又怎么会去选amd呢（还有积热问题）\n30系显卡容易买到矿卡，40系又溢价。8GB显存又能干啥。\n最后没买，用上了旧电脑。这台电脑有两个问题：\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/dggduu-blogs/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/dggduu-blogs/img/avatar_hu10853315724308447746.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/dggduu-blogs">Aobara的Blog</a></h1>
+            <h2 class="site-description">这个博客用于存放一些笔记</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/1297734959'
+                        target="_blank"
+                        title="bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6z" /><path d="M8 3l2 3" /><path d="M16 3l-2 3" /><path d="M9 13v-2" /><path d="M15 11v2" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/dggduu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/dggduu-blogs/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/dggduu-blogs/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/dggduu-blogs/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/dggduu-blogs/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/dggduu-blogs/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#动机">动机</a></li>
+    <li><a href="#过程">过程</a>
+      <ol>
+        <li><a href="#重装系统">重装系统</a></li>
+        <li><a href="#高级电源设置">高级电源设置</a>
+          <ol>
+            <li><a href="#启用高级电源设置">启用高级电源设置</a></li>
+          </ol>
+        </li>
+        <li><a href="#设置">设置</a>
+          <ol>
+            <li><a href="#硬盘">硬盘</a></li>
+            <li><a href="#睡眠">睡眠</a></li>
+            <li><a href="#intel显卡设置">intel显卡设置</a></li>
+            <li><a href="#pci-express">PCI Express</a></li>
+            <li><a href="#处理器电源管理4-5">处理器电源管理 </a></li>
+            <li><a href="#图形设置">图形设置</a></li>
+            <li><a href="#显示">显示</a></li>
+            <li><a href="#节能模式设置">节能模式设置</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/dggduu-blogs/categories/%E9%AB%98%E7%BA%A7%E7%94%B5%E6%BA%90%E8%AE%BE%E7%BD%AE/" >
+                高级电源设置
+            </a>
+        
+            <a href="/dggduu-blogs/categories/%E7%AC%94%E8%AE%B0/" >
+                笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/dggduu-blogs/p/%E7%AC%94%E7%94%B5%E7%BB%AD%E8%88%AA%E6%8F%90%E5%8D%87%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/">笔电续航提升研究笔记</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024/07/21</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="动机">动机
+</h2><p>本是想换电脑的，但是13，14代intel cpu问题又打消了我的念头。在牢不可破的wintel联盟下我又怎么会去选amd呢（还有积热问题）<br>
+30系显卡容易买到矿卡，40系又溢价。8GB显存又能干啥。<br>
+最后没买，用上了旧电脑。这台电脑有两个问题：</p>
+<ul>
+<li>在低负载情况下风扇狂叫</li>
+<li>续航短，大约只有2小时不到（48Whr）
+因此开始折腾起这台电脑</li>
+</ul>
+<h2 id="过程">过程
+</h2><h3 id="重装系统">重装系统
+</h3><p>对我电脑来说，联想自带的软件其实都不重要，加上这电脑有很多东西很难删干净，索性重装系统。
+为了能使用WSL,我选择了 Win10 LTSC2021。<br>
+但是重装完系统后有意思的事来了，上面的两个问题仍然出现&hellip;😂
+打开电源设置一看，谁打开的性能模式！而且我省电模式呢！！！</p>
+<h3 id="高级电源设置">高级电源设置
+</h3><p>为了进一步提升续航，我开始研究起高级电源设置。</p>
+<h4 id="启用高级电源设置">启用高级电源设置
+</h4><ol>
+<li>更改注册表</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> powercfg -attributes SUB_PROCESSOR CPMINCORES -ATTRIB_HIDE
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>使用专门的软件<br>
+Windows power plan settings explorer utility<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ol>
+<h3 id="设置">设置
+</h3><p>！！！请先新建一个电源计划！！！</p>
+<hr>
+<p><strong>鄙人不才，论权威请参阅MSDN:<br>
+<a class="link" href="https://learn.microsoft.com/zh-cn/windows-hardware/customize/power-settings/configure-power-settings"  target="_blank" rel="noopener"
+    >https://learn.microsoft.com/zh-cn/windows-hardware/customize/power-settings/configure-power-settings</a></strong></p>
+<p>设备空闲策略：节能</p>
+<h4 id="硬盘">硬盘
+</h4><p>AHCI Link Power Management - HIPM/DIPM<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>（a.k.a. LPM）：视你情况（我是lowest）</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Setting</th>
+          <th style="text-align: left">Description 描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Active</td>
+          <td style="text-align: left">Neither HIPM or DIPM allowed. Link power management is not used. <br> HIPM或DIPM均不允许。不使用链路电源管理。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HIPM</td>
+          <td style="text-align: left">HIPM (Host Initiated Link Power Management) only is allowed <br> 仅允许HIPM（主机启动的链路电源管理）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HIPM + DIPM</td>
+          <td style="text-align: left">HIPM and DIPM are allowed <br> 允许使用HIPM和DIPM</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DIPM</td>
+          <td style="text-align: left">DIPM (Device Initiated Link Power Management) only is allowed <br> 仅允许DIPM（设备启动链路电源管理）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Lowest</td>
+          <td style="text-align: left">HIPM, DIPM, and DEVSLP (if DEVSLP is supported by the storage device) are allowed. <br> 允许使用HIPM、DIPM和DEVSLP（如果存储设备支持DEVSLP）。</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>NVMe NOPPME：关闭</p>
+<blockquote>
+<p>它的用途是在ssd休眠时允许ssd使用更多功耗完成一些像碎片整理的后台任务。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+</blockquote>
+<h4 id="睡眠">睡眠
+</h4><ol>
+<li>允许离开模式策略
+<ol>
+<li>什么是离开模式策略：离开电脑后，电脑并不会完全进入睡眠，而是继续执行任务</li>
+<li>这个看你，我是关上了</li>
+</ol>
+</li>
+<li>允许使用系统所需的策略：否</li>
+<li>允许使用唤醒定时器：禁用</li>
+</ol>
+<h4 id="intel显卡设置">intel显卡设置
+</h4><p>最长电源寿命</p>
+<h4 id="pci-express">PCI Express
+</h4><p>链接状态电源管理：最大电源节省量</p>
+<h4 id="处理器电源管理4-5">处理器电源管理<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>
+</h4><p>处理器性能降低策略：rocket<br>
+处理器性能提升策略 (睿频):单一的、理想的、IdealAggressive、Rocket(保守-&gt;激进，省电的话别选rocket)<br>
+处理器性能提高阈值：数字越大处理器升频越懒惰，数字越小处理器升频越积极<br>
+处理器性能降低阈值：数字越大处理器降频越积极，数字越小处理器降频越懒惰<br>
+处理器能源性能首选项策略:数字越小处理器越优先考虑提高性能，数字越大处理器越优先考虑降低功耗</p>
+<p>允许节流状态：启用<br>
+处理器闲置禁用：启用<br>
+停用已停用性能状态的处理器性能核心：最深性能状态<br>
+针对第 1 类处理器电源效率停用已停用性能状态的处理器性能核心：最深性能状态<br>
+处理器性能核心放置减小策略：所有可能的核心<br>
+处理器闲置升级阈值：0<br>
+处理器性能核心放置最小核心数量：100<br>
+处理器最大频率：看你情况<br>
+最小处理器状态和最大处理器状态：(此项设置将处理器的最高默频作为100%)<br>
+例子：</p>
+<blockquote>
+<ul>
+<li>If your server requires ultra-low latency, invariant CPU frequency (e.g., for repeatable testing), or the highest performance levels, you might not want the processors switching to lower-performance states.
+For such a server, you can cap the minimum processor performance state at 100 percent</li>
+<li>If your server requires lower energy consumption, you might want to cap the processor performance state at a percentage of maximum. For example, you can restrict the processor to 75 percent of its maximum frequency<br>
+<em>-MSDN <sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></em></li>
+</ul>
+</blockquote>
+<p>处理器性能自主模式：已启用<br>
+系统散热方式：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">设置</th>
+          <th style="text-align: left">描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">主动</td>
+          <td style="text-align: left">当温度过高时优先提高风扇转速</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">被动</td>
+          <td style="text-align: left">当温度过高时优先降低处理器性能</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><strong>进阶请参阅参考文档</strong><sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> <sup id="fnref2:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> <sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<h4 id="图形设置">图形设置
+</h4><p>gpu首选项策略：低功耗</p>
+<h4 id="显示">显示
+</h4><p>高级色彩质量偏好：高级色彩节电偏好（眼睛对色彩不敏感关了算了）</p>
+<h4 id="节能模式设置">节能模式设置
+</h4><p>显示器亮度权重：都为100%（就是关闭“开启省电模式后会降亮度”的策略，本来显示器就没多少nits,再降低就真看不清了）<br>
+节能模式策略：主动</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a class="link" href="https://forums.guru3d.com/threads/windows-power-plan-settings-explorer-utility.416058/"  target="_blank" rel="noopener"
+    >https://forums.guru3d.com/threads/windows-power-plan-settings-explorer-utility.416058/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a class="link" href="https://www.tenforums.com/tutorials/72971-add-ahci-link-power-management-power-options-windows.html"  target="_blank" rel="noopener"
+    >https://www.tenforums.com/tutorials/72971-add-ahci-link-power-management-power-options-windows.html</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a class="link" href="https://www.bilibili.com/read/cv18942103/"  target="_blank" rel="noopener"
+    >自用的WIndows电源设置（踩坑后的修订版）</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a class="link" href="https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/hardware/power/power-performance-tuning"  target="_blank" rel="noopener"
+    >Windows server 电源和性能优化 -MSDN</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a class="link" href="https://www.bilibili.com/read/cv33821884/#:~:text=%E5%A4%84%E7%90%86%E5%99%A8%E6%80%A7%E8%83%BD%E8%B0%83%E6%8E%A7%E7%AD%96%E7%95%A5"  target="_blank" rel="noopener"
+    >Windows电源选项注释及设置建议——手搓OS Turbo</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Dggdoo
+    </section>
+    
+    <section class="powerby">
+        
+            这个博客用于存放一些笔记 <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/dggduu-blogs/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
