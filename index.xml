@@ -8,12 +8,12 @@
         <language>zh-cn</language>
         <copyright>Dggdoo</copyright>
         <lastBuildDate>Sat, 07 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://dggduu.github.io/dggduu-blogs/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>如何通过Diffsuer来运行SD</title>
-        <link>https://dggduu.github.io/dggduu-blogs/p/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87diffsuer%E6%9D%A5%E8%BF%90%E8%A1%8Csd/</link>
+        <title>如何通过 Diffsuer 来运行 StableDiffusion</title>
+        <link>https://dggduu.github.io/dggduu-blogs/p/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87-diffsuer-%E6%9D%A5%E8%BF%90%E8%A1%8C-stablediffusion/</link>
         <pubDate>Sat, 07 Sep 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://dggduu.github.io/dggduu-blogs/p/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87diffsuer%E6%9D%A5%E8%BF%90%E8%A1%8Csd/</guid>
-        <description>&lt;img src="https://dggduu.github.io/dggduu-blogs/p/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87diffsuer%E6%9D%A5%E8%BF%90%E8%A1%8Csd/title.jpg" alt="Featured image of post 如何通过Diffsuer来运行SD" /&gt;&lt;h2 id=&#34;使用diffsuer的原因&#34;&gt;使用Diffsuer的原因
+        <guid>https://dggduu.github.io/dggduu-blogs/p/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87-diffsuer-%E6%9D%A5%E8%BF%90%E8%A1%8C-stablediffusion/</guid>
+        <description>&lt;img src="https://dggduu.github.io/dggduu-blogs/p/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87-diffsuer-%E6%9D%A5%E8%BF%90%E8%A1%8C-stablediffusion/title.jpg" alt="Featured image of post 如何通过 Diffsuer 来运行 StableDiffusion" /&gt;&lt;h2 id=&#34;使用diffsuer的原因&#34;&gt;使用Diffsuer的原因
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;没钱买frp服务(指Gradio,ngrok这种可以用Python调用的)&lt;/li&gt;
 &lt;li&gt;4060 8GB容易爆显存。就我自己而言，速度不重要，显存很重要，因为显存决定了你能不能跑更大参数的模型或是更复杂的任务。（可惜硬要本地部署的话只能上台式😫，当然富哥也可以用4080 Laptop 12GB）&lt;/li&gt;
